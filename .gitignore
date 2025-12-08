@@ -1,17 +1,81 @@
-# Python
+# ==========================
+# 1. Python & uv 核心环境 (Core)
+# ==========================
+# 编译产生的缓存文件 (必须忽略)
 __pycache__/
 *.py[cod]
-.ipynb_checkpoints/
-.env
+*$py.class
+
+# uv 创建的虚拟环境 (千万别上传，体积大且跨平台不兼容)
 .venv/
 env/
 venv/
 
-# Data (严禁上传数据到 GitHub)
-data/
-!data/.gitkeep
+# 如果你习惯在项目里放本地的环境变量文件 (包含API Key等机密信息，严禁上传！)
+.env
+.env.local
 
-# Outputs (可选，根据需求决定是否上传结果)
-results/logs/
-*.png
-*.pdf
+# ==========================
+# 2. uv 专属配置
+# ==========================
+# uv 的构建缓存（一般在系统层级，但如果改到了项目里，需忽略）
+.uv_cache/
+
+# 注意：以下两个文件必须保留（不要忽略）！
+# !pyproject.toml
+# !uv.lock
+# !.python-version
+
+# ==========================
+# 3. 数据层安全 (Data Safety)
+# ==========================
+# 原则：代码上传，但数据不上传（特别是 raw 数据）
+# 忽略 data 下的所有内容...
+data/*
+
+# ...但是！保留文件夹结构本身 (配合 .gitkeep 使用)
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# 如果你有非常小的外部字典或配置数据(比如 <1MB)，可以设立例外规则：
+# !data/external/small_config.csv
+
+# ==========================
+# 4. 结果与输出 (Generated Artifacts)
+# ==========================
+# 结果应该是代码跑出来的，不需要版本控制
+results/figures/*
+results/tables/*
+results/logs/*
+
+# 同样保留文件夹结构
+!results/figures/.gitkeep
+!results/tables/.gitkeep
+!results/logs/.gitkeep
+
+# ==========================
+# 5. Jupyter Notebooks (Lab/Experiment)
+# ==========================
+# Jupyter 的自动保存记录
+.ipynb_checkpoints/
+
+# 如果你不想上传具体的 notebook 输出图表（只传代码），可以使用 nbstripout 工具
+# 但通常 CSS 项目为了展示过程，会保留 .ipynb 本身
+
+# ==========================
+# 6. 编辑器与系统垃圾 (OS/IDE Junk)
+# ==========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ==========================
+# 7. 兼容性文件 (Optional)
+# ==========================
+# 如果你是纯 uv 项目，requirements.txt 属于导出产物，可以忽略。
+# 但为了兼容不用 uv 的人，也可以选择上传。
+# requirements.txt
