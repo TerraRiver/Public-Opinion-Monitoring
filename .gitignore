@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.venv/
+env/
+venv/
+
+# Data (严禁上传数据到 GitHub)
+data/
+!data/.gitkeep
+
+# Outputs (可选，根据需求决定是否上传结果)
+results/logs/
+*.png
+*.pdf
